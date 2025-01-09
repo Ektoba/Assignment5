@@ -32,7 +32,7 @@ void AMyActor2::BeginPlay()
 		if (FMath::RandRange(0, 1))
 			createEvent();
 	}
-	UE_LOG(LogTemp, Warning, TEXT("Event Count : %d , tot Distance : %lf"),m_eventCount, FVector::Dist(lot, vMove));
+	UE_LOG(LogTemp, Warning, TEXT("Event Count : %d , tot Distance : %lf"),m_eventCount, dist(lot, vMove));
 }
 
 FVector AMyActor2::step()
@@ -62,10 +62,7 @@ void AMyActor2::createEvent()
 	UE_LOG(LogTemp, Error, TEXT("Create Event!. Event Count : %d "),m_eventCount);
 }
 
-// Called every frame
-void AMyActor2::Tick(float DeltaTime)
+double AMyActor2::dist(const FVector& v1, const FVector& v2)
 {
-	Super::Tick(DeltaTime);
-
+	return FMath::Square(v2.X - v1.X) + FMath::Square(v2.Y - v1.Y) + FMath::Square(v2.Z - v1.Z);
 }
-
