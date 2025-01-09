@@ -27,12 +27,12 @@ void AMyActor2::BeginPlay()
 		FVector vActorLot = GetActorLocation();
 		vMove = move();
 		UE_LOG(LogTemp, Warning, TEXT("Actor Move Coord: x : %lf y : %lf \n Actor Move Distance : %lf"),
-			vMove.X, vMove.Y, FVector::Dist(vActorLot, vMove));
+			vMove.X, vMove.Y, vector_dist(vActorLot, vMove));
 
 		if (FMath::RandRange(0, 1))
 			createEvent();
 	}
-	UE_LOG(LogTemp, Warning, TEXT("Event Count : %d , tot Distance : %lf"),m_eventCount, dist(lot, vMove));
+	UE_LOG(LogTemp, Warning, TEXT("Event Count : %d , tot Distance : %lf"),m_eventCount, vector_dist(lot, vMove));
 }
 
 FVector AMyActor2::step()
@@ -62,7 +62,7 @@ void AMyActor2::createEvent()
 	UE_LOG(LogTemp, Error, TEXT("Create Event!. Event Count : %d "),m_eventCount);
 }
 
-double AMyActor2::dist(const FVector& v1, const FVector& v2)
+double AMyActor2::vector_dist(const FVector& v1, const FVector& v2)
 {
 	return FMath::Square(v2.X - v1.X) + FMath::Square(v2.Y - v1.Y) + FMath::Square(v2.Z - v1.Z);
 }

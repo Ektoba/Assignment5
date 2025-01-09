@@ -23,8 +23,6 @@ protected:
 	void createEvent();
 protected:
 	uint32 m_eventCount;
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
+private:
+	double vector_dist(const FVector& v1, const FVector& v2);
 };
